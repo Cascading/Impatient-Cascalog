@@ -42,4 +42,4 @@ This set of progressive coding examples starts with a simple file copy and build
 
 ### Part 7
 * Implements switch to run the example in local mode (without Apache Hadoop)
-* Uses an R script to analyze/visualize the results
+* Uses [Incanter](https://github.com/liebke/incanter) to analyze/visualize the results
