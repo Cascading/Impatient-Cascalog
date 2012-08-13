@@ -1,8 +1,11 @@
-## <del>Cascading</del> Cascalog for the Impatient
+## <del>Cascading</del> *Cascalog* for the Impatient
 
-Welcome to [Cascading for the
-Impatient](http://www.cascading.org/category/impatient/), a series of
-blog posts and <del>Cascading 2.0</del> [Cascalog](http://www.cascalog.org/) code examples to get you started. Quickly. Like, yesterday.
+Welcome to Cascalog for the Impatient, a series of tutorial 
+and <del>Cascading 2.0</del> [Cascalog](http://www.cascalog.org/) code examples to get you started. 
+Quickly. Like, yesterday.
+
+*This is a shameless rip-off of [Cascading for the
+Impatient](http://www.cascading.org/category/impatient/).*
 
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
