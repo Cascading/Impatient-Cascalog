@@ -1,13 +1,15 @@
-## Cascading for the Impatient
+## <del>Cascading</del> Cascalog for the Impatient
 
-Welcome to [Cascading for the Impatient](http://www.cascading.org/category/impatient/), a series of blog posts and [Cascading 2.0](http://www.cascading.org/) code examples to get you started. Quickly. Like, yesterday.
+Welcome to [Cascading for the
+Impatient](http://www.cascading.org/category/impatient/), a series of
+blog posts and <del>Cascading 2.0</del> [Cascalog](http://www.cascalog.org/) code examples to get you started. Quickly. Like, yesterday.
 
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
 For more detailed information, please see https://github.com/Cascading/Impatient/wiki
 
 ### Part 1
-* Implements simplest Cascading app possible
+* Implements simplest <del>Cascading</del> Cascalog app possible
 * Copies each TSV line from source tap to sink tap
 * Roughly, in about a dozen lines of code
 * Physical plan: 1 Mapper
