@@ -14,7 +14,7 @@ To build the sample app from the command line use:
 Before running this sample app, be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
 
     rm -rf output
-    hadoop jar ./target/impatient.jar data/rain.txt output/rain
+    hadoop jar ./target/impatient.jar ./data/rain.txt ./output/rain
 
 To view the results:
 
