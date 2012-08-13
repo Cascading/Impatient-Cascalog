@@ -6,8 +6,6 @@ blog posts and <del>Cascading 2.0</del> [Cascalog](http://www.cascalog.org/) cod
 
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
-For more detailed information, please see https://github.com/Cascading/Impatient/wiki
-
 ### Part 1
 * Implements simplest <del>Cascading</del> Cascalog app possible
 * Copies each TSV line from source tap to sink tap
