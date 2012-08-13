@@ -15,6 +15,8 @@ This set of progressive coding examples starts with a simple file copy and build
 * Roughly, in about a dozen lines of code
 * Physical plan: 1 Mapper
 
+## TO-DO
+
 ### Part 2
 * Implements a simple example of WordCount
 * Uses a regex to split the input text lines into a token stream
