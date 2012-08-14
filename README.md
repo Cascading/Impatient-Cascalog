@@ -15,8 +15,6 @@ This set of progressive coding examples starts with a simple file copy and build
 * Roughly, in about a dozen lines of code
 * Physical plan: 1 Mapper
 
-## TO-DO
-
 ### Part 2
 * Implements a simple example of WordCount
 * Uses a regex to split the input text lines into a token stream
@@ -27,6 +25,8 @@ This set of progressive coding examples starts with a simple file copy and build
 * Uses a custom Function to scrub the token stream
 * Discusses when to use standard Operations vs. creating custom ones
 * Physical plan: 1 Mapper, 1 Reducer
+
+## TO-DO
 
 ### Part 4
 * Shows how to use a HashJoin on two pipes
@@ -45,3 +45,7 @@ This set of progressive coding examples starts with a simple file copy and build
 ### Part 7
 * Implements switch to run the example in local mode (without Apache Hadoop)
 * Uses [Incanter](https://github.com/liebke/incanter) to analyze/visualize the results
+
+### Write-up
+* a step-by-step tutorial for each part explaining Cascalog concepts and
+best practice
