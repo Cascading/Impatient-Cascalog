@@ -5,4 +5,4 @@
 (defn -main [in out & args]
   (?<- (hfs-textline out)
        [?line]
-       ((hfs-textline in) :> ?line)))
+       ((hfs-textline in) ?line)))
