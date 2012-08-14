@@ -6,7 +6,7 @@
 
 (defmapcatop split [line]
   "reads in a line of string and splits it by regex"
-  (s/split #"\s+" line))
+  (s/split line #"\s+"))
 
 (defn -main [in out & args]
   (?<- (hfs-textline out)
