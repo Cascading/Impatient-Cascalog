@@ -1,8 +1,9 @@
 (ns impatient.core
-  (:use cascalog.api)
+  (:use [cascalog.api]
+        [cascalog.more-taps :only (hfs-delimited)])
   (:gen-class))
 
 (defn -main [in out & args]
-  (?<- (hfs-textline out)
-       [?line]
-       ((hfs-textline in) ?line)))
+  (?<- (hfs-delimited out)
+       [?doc ?line]
+       ((hfs-delimited in) ?doc ?line)))
