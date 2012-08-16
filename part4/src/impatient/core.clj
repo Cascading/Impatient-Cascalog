@@ -6,7 +6,7 @@
 
 (defmapcatop split [line]
   "reads in a line of string and splits it by regex"
-  (s/split line #"\s+"))
+  (s/split line #"[\[\]\\\(\),.)\s]+"))
 
 (defn scrub-text [s]
   "trim open whitespaces and lower case"
