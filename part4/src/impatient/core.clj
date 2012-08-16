@@ -1,5 +1,6 @@
 (ns impatient.core
-  (:use cascalog.api)
+  (:use [cascalog.api]
+        [cascalog.more-taps :only (hfs-delimited)])
   (:require [clojure.string :as s]
             [cascalog.ops :as c])
   (:gen-class))
@@ -23,9 +24,9 @@
       (widen ?stop :> ?word ?stub)))
 
 (defn -main [in out stop & args]
-  (?<- (hfs-textline out)
+  (?<- (hfs-delimited out)
        [?word ?count]
-       ((hfs-textline in) ?line)
+       ((hfs-delimited in) _ ?line)
        (split ?line :> ?word-dirty)
        (scrub-text ?word-dirty :> ?word)
        ((expand-stop-tuple stop) ?word !!is-stop)

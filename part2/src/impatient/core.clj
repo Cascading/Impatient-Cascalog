@@ -1,5 +1,6 @@
 (ns impatient.core
-  (:use cascalog.api)
+  (:use [cascalog.api]
+        [cascalog.more-taps :only (hfs-delimited)])
   (:require [clojure.string :as s]
             [cascalog.ops :as c])
   (:gen-class))
@@ -9,8 +10,8 @@
   (s/split line #"[\[\]\\\(\),.)\s]+"))
 
 (defn -main [in out & args]
-  (?<- (hfs-textline out)
+  (?<- (hfs-delimited out)
        [?word ?count]
-       ((hfs-textline in) ?line)
+       ((hfs-delimited in) _ ?line)
        (split ?line :> ?word)
        (c/count ?count)))
