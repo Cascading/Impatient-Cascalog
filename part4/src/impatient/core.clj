@@ -16,6 +16,7 @@
     (s/lower-case)))
 
 (defmapop widen [x]
+  "takes in a value and returns a 2-tuple with the value and boolean true"
   [x true])
 
 (defn expand-stop-tuple [dir]
