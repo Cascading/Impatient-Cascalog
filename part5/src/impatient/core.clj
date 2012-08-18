@@ -2,7 +2,8 @@
   (:use [cascalog.api]
         [cascalog.more-taps :only (hfs-delimited)])
   (:require [clojure.string :as s]
-            [cascalog.ops :as c])
+            [cascalog.ops :as c]
+            [cascalog.vars :as v])
   (:gen-class))
 
 (defmapcatop split [line]
@@ -38,7 +39,7 @@
 
 (defn uniquefy [src]
   "a helper function to DISTINCT the incoming source"
-  (let [vars (get-out-fields src)]
+  (let [vars (v/gen-non-nullable-vars (num-out-fields src))]
     (<- vars
         (src :>> vars)
         (:distinct true))))
@@ -52,7 +53,7 @@
 (defn DF [src]
   (let [distincted (uniquefy src)]
     (<- [?df-word ?df-count]
-        (distincted ?doc-id ?df-word)
+        (distincted _ ?df-word)
         (c/count ?df-count))))
 
 (defn TF [src]
