@@ -26,8 +26,6 @@ This set of progressive coding examples starts with a simple file copy and build
 * Discusses when to use standard Operations vs. creating custom ones
 * Physical plan: 1 Mapper, 1 Reducer
 
-## TO-DO
-
 ### Part 4
 * Shows how to use a HashJoin on two pipes
 * Filters a list of stop words out of the token stream
@@ -38,6 +36,8 @@ This set of progressive coding examples starts with a simple file copy and build
 * Shows how to use a SumBy and a CoGroup
 * Physical plan: 11 Mappers, 9 Reducers
 
+## TO-DO
+
 ### Part 6
 * Includes unit tests in the build
 * Shows how to use other TDD features: checkpoints, assertions, traps, debug
@@ -46,6 +46,11 @@ This set of progressive coding examples starts with a simple file copy and build
 * Implements switch to run the example in local mode (without Apache Hadoop)
 * Uses [Incanter](https://github.com/liebke/incanter) to analyze/visualize the results
 
+### Catch-up
+* Generating DOT file
+
 ### Write-up
+* installation and setup guide
+* update each README
 * a step-by-step tutorial for each part explaining Cascalog concepts and
-best practice
+best practices
