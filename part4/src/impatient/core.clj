@@ -11,25 +11,25 @@
 
 (defn scrub-text [s]
   "trim open whitespaces and lower case"
-  (-> s
-    (s/trim)
-    (s/lower-case)))
+  ((comp s/trim s/lower-case) s))
 
-(defmapop widen [x]
-  "takes in a value and returns a 2-tuple with the value and boolean true"
-  [x true])
+(defn constant-true [x]
+  "always return true"
+  true)
 
-(defn expand-stop-tuple [dir]
-  (<- [?word ?stub]
-      ((hfs-textline dir) ?stop)
-      (widen ?stop :> ?word ?stub)))
+(defn expand-stop-tuple [stop]
+  (<- [?stop ?stub]
+      (stop ?stop)
+      (constant-true ?stop :> ?stub)))
 
 (defn -main [in out stop & args]
-  (?<- (hfs-delimited out)
-       [?word ?count]
-       ((hfs-delimited in) _ ?line)
-       (split ?line :> ?word-dirty)
-       (scrub-text ?word-dirty :> ?word)
-       ((expand-stop-tuple stop) ?word !!is-stop)
-       (nil? !!is-stop)
-       (c/count ?count)))
+  (let [rain (hfs-delimited in)
+        stop (expand-stop-tuple (hfs-delimited stop))]
+    (?<- (hfs-delimited out)
+         [?word ?count]
+         (rain _ ?line)
+         (split ?line :> ?word-dirty)
+         (scrub-text ?word-dirty :> ?word)
+         (stop ?word !!is-stop)
+         (nil? !!is-stop)
+         (c/count ?count))))

@@ -2,8 +2,7 @@
   (:use [cascalog.api]
         [cascalog.more-taps :only (hfs-delimited)])
   (:require [clojure.string :as s]
-            [cascalog.ops :as c]
-            [cascalog.vars :as v])
+            [cascalog [ops :as c] [vars :as v]])
   (:gen-class))
 
 (defmapcatop split [line]
@@ -14,14 +13,14 @@
   "trim open whitespaces and lower case"
   ((comp s/trim s/lower-case) s))
 
-(defmapop widen [x]
-  "takes in a value and returns a 2-tuple with the value and boolean true"
-  [x true])
+(defn constant-true [x]
+  "always return true"
+  true)
 
 (defn expand-stop-tuple [stop]
-  (<- [?word ?stub]
+  (<- [?stop ?stub]
       (stop ?stop)
-      (widen ?stop :> ?word ?stub)))
+      (constant-true ?stop :> ?stub)))
 
 (defn etl-docs-gen [rain stop]
   (<- [?doc-id ?word]
