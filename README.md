@@ -48,6 +48,7 @@ This set of progressive coding examples starts with a simple file copy and build
 
 ### Catch-up
 * Generating DOT file
+* create Gists of outputs
 
 ### Write-up
 * installation and setup guide

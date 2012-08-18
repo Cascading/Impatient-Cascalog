@@ -18,6 +18,7 @@
   true)
 
 (defn expand-stop-tuple [stop]
+  "hack to make 'left-join-negate-right' works in etl-docs-gen"
   (<- [?stop ?stub]
       (stop ?stop)
       (constant-true ?stop :> ?stub)))
