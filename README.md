@@ -10,31 +10,27 @@ Impatient](http://www.cascading.org/category/impatient/).*
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
 ### Part 1
-* Implements simplest <del>Cascading</del> Cascalog app possible
-* Copies each TSV line from source tap to sink tap
-* Roughly, in about a dozen lines of code
-* Physical plan: 1 Mapper
+* Implements simplest Cascalog query possible
+* Copies each line from source tap to sink tap
+* Roughly, in about 10 lines of code
 
 ### Part 2
 * Implements a simple example of WordCount
-* Uses a regex to split the input text lines into a token stream
-* Generates a DOT file, to show the Cascading flow graphically
-* Physical plan: 1 Mapper, 1 Reducer
+* Uses a regex to split the input text lines into a Tuple stream of tokens
+* Uses a custom Cascalog operator
 
 ### Part 3
-* Uses a custom Function to scrub the token stream
+* Uses a custom function to scrub the token stream
 * Discusses when to use standard Operations vs. creating custom ones
-* Physical plan: 1 Mapper, 1 Reducer
 
 ### Part 4
-* Shows how to use a HashJoin on two pipes
+* Shows how to join sources together
 * Filters a list of stop words out of the token stream
-* Physical plan: 1 Mapper, 1 Reducer
+* Uses a Predicate Macro
 
 ### Part 5
-* Calculates TF-IDF using an ExpressionFunction
-* Shows how to use a SumBy and a CoGroup
-* Physical plan: 11 Mappers, 9 Reducers
+* Calculates TF-IDF by breaking the problem into sub-queries
+* Shows using an abstracted, re-useable sub-query as a function
 
 ## TO-DO
 
