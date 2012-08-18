@@ -31,7 +31,7 @@
       (nil? !!is-stop)))
 
 (defn word-count [src]
-  "simple word count of across all documents"
+  "simple word count across all documents"
   (<- [?word ?count]
       (src _ ?word)
       (c/count ?count)))
