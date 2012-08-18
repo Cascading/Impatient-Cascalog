@@ -28,7 +28,7 @@
       (rain ?doc-id ?line)
       (split ?line :> ?word-dirty)
       (scrub-text ?word-dirty :> ?word)
-      ((expand-stop-tuple stop) ?word !!is-stop)
+      (stop ?word !!is-stop)
       (nil? !!is-stop)))
 
 (defn word-count [src]
@@ -75,8 +75,8 @@
         (tf-idf-formula ?tf-count ?df-count n-doc :> ?tf-idf))))
 
 (defn -main [in out stop tfidf & args]
-  (let [rain (hfs-delimited in)
-        stop (hfs-delimited stop)
+  (let [rain (hfs-delimited in :skip-header? true)
+        stop (expand-stop-tuple (hfs-delimited stop :skip-header? true))
         src  (etl-docs-gen rain stop)]
     (?- (hfs-delimited tfidf)
         (TF-IDF src))

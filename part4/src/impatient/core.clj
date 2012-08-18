@@ -23,8 +23,8 @@
       (constant-true ?stop :> ?stub)))
 
 (defn -main [in out stop & args]
-  (let [rain (hfs-delimited in)
-        stop (expand-stop-tuple (hfs-delimited stop))]
+  (let [rain (hfs-delimited in :skip-header? true)
+        stop (expand-stop-tuple (hfs-delimited stop :skip-header? true))]
     (?<- (hfs-delimited out)
          [?word ?count]
          (rain _ ?line)

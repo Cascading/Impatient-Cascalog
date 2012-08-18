@@ -12,6 +12,6 @@
 (defn -main [in out & args]
   (?<- (hfs-delimited out)
        [?word ?count]
-       ((hfs-delimited in) _ ?line)
+       ((hfs-delimited in :skip-header? true) _ ?line)
        (split ?line :> ?word)
        (c/count ?count)))
