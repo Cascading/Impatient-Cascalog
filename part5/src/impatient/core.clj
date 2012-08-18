@@ -9,10 +9,6 @@
   "reads in a line of string and splits it by regex"
   (s/split line #"[\[\]\\\(\),.)\s]+"))
 
-(defn scrub-text [s]
-  "trim open whitespaces and lower case"
-  ((comp s/trim s/lower-case) s))
-
 (defn constant-true [x]
   "always return true"
   true)
@@ -27,7 +23,7 @@
   (<- [?doc-id ?word]
       (rain ?doc-id ?line)
       (split ?line :> ?word-dirty)
-      (scrub-text ?word-dirty :> ?word)
+      ((c/comp #'s/trim #'s/lower-case) ?word-dirty :> ?word)
       (stop ?word !!is-stop)
       (nil? !!is-stop)))
 
