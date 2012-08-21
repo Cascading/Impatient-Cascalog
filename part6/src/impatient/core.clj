@@ -1,5 +1,6 @@
 (ns impatient.core
   (:use [cascalog.api]
+        [cascalog.checkpoint]
         [cascalog.more-taps :only (hfs-delimited)])
   (:require [clojure.string :as s]
             [cascalog [ops :as c] [vars :as v]])
@@ -75,10 +76,16 @@
         (tf-idf-formula ?tf-count ?df-count n-doc :> ?tf-idf))))
 
 (defn -main [in out stop tfidf & args]
-  (let [rain (hfs-delimited in :skip-header? true)
-        stop (expand-stop-tuple (hfs-delimited stop :skip-header? true))
-        src  (etl-docs-gen rain stop)]
-    (?- (hfs-delimited tfidf)
-        (TF-IDF src))
-    (?- (hfs-delimited out)
-        (word-count src))))
+  (workflow
+    ["tmp/checkpoint"]
+    etl-step ([:tmp-dirs etl-stage]
+              (let [rain (hfs-delimited in :skip-header? true)
+                    stop (expand-stop-tuple (hfs-delimited stop :skip-header? true))]
+                (?- (hfs-seqfile etl-stage)
+                    (etl-docs-gen rain stop))))
+    tf-step  ([:deps etl-step]
+              (?- (hfs-delimited tfidf)
+                  (TF-IDF (hfs-seqfile etl-stage)))) 
+    wrd-step ([:deps etl-step]
+              (?- (hfs-delimited out)
+                  (word-count (hfs-seqfile etl-stage))))))
