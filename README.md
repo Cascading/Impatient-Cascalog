@@ -32,11 +32,11 @@ This set of progressive coding examples starts with a simple file copy and build
 * Calculates TF-IDF by breaking the problem into sub-queries
 * Shows using an abstracted, re-useable sub-query as a function
 
-## TO-DO
-
 ### Part 6
 * Includes unit tests in the build
 * Shows how to use other TDD features: checkpoints, assertions, traps, debug
+
+## TO-DO
 
 ### Part 7
 * Implements switch to run the example in local mode (without Apache Hadoop)
