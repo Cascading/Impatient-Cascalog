@@ -81,11 +81,12 @@
     etl-step ([:tmp-dirs etl-stage]
               (let [rain (hfs-delimited in :skip-header? true)
                     stop (expand-stop-tuple (hfs-delimited stop :skip-header? true))]
-                (?- (hfs-seqfile etl-stage)
+                (?- (hfs-delimited etl-stage)
                     (etl-docs-gen rain stop))))
     tf-step  ([:deps etl-step]
-              (?- (hfs-delimited tfidf)
-                  (TF-IDF (hfs-seqfile etl-stage)))) 
+              (let [src (name-vars (hfs-delimited etl-stage :skip-header? true) ["?doc-id" "?word"])]
+                (?- (hfs-delimited tfidf)
+                    (TF-IDF src)))) 
     wrd-step ([:deps etl-step]
               (?- (hfs-delimited out)
-                  (word-count (hfs-seqfile etl-stage))))))
+                  (word-count (hfs-delimited etl-stage))))))
