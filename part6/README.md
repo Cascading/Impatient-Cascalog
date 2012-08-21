@@ -1,20 +1,20 @@
-Cascading for the Impatient, Part 6
-===================================
+# Cascading for the Impatient, Part 6
 The goal is to expand on our Word Count example in Cascading, adding a custom **function** to calculate [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf). This shows how to use a **sumby** and also a **cogroup**.
 
 We'll keep building on this example to show features related to TDD and "local" mode.
 
 More detailed background information and step-by-step documentation is provided at https://github.com/ConcurrentCore/impatient/wiki
 
-Build Instructions
-==================
-To generate an IntelliJ project use:
+# Run Tests
 
-    gradle ideaModule
+```bash
+lein test
+```
 
+# Build Instructions
 To build the sample app from the command line use:
 
-    gradle clean jar
+    lein uberjar 
 
 Before running this sample app, be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
 
