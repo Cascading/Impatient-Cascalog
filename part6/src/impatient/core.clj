@@ -24,13 +24,23 @@
   "trim open whitespaces and lower case"
   ((comp s/trim s/lower-case) s))
 
+(defn assert-tuple [pred msg x]
+  "helper function to add assertion to tuple stream"
+  (when (nil? (assert (pred x) msg))
+    true))
+
+(def assert-doc-id ^{:doc "assert doc-id is correct format"} 
+  (partial assert-tuple #(re-seq #"doc\d+" %) "unexpected doc-id"))
+
 (defn etl-docs-gen [rain stop]
   (<- [?doc-id ?word]
       (rain ?doc-id ?line)
       (split ?line :> ?word-dirty)
       (scrub-text ?word-dirty :> ?word)
       (stop ?word !!is-stop)
-      (nil? !!is-stop)))
+      (nil? !!is-stop)
+      (assert-doc-id ?doc-id)
+      (:trap (hfs-textline "tmp/trap" :sinkmode :update))))
 
 (defn word-count [src]
   "simple word count across all documents"
