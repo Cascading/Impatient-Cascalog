@@ -12,3 +12,5 @@
 *.jar
 *.war
 *.ear
+
+tmp/
