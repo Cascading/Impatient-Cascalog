@@ -9,5 +9,6 @@
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [cascalog "1.10.0"]
                  [cascalog-more-taps "0.3.0"]
+                 [cascalog-checkpoint "0.2.0"]
                  [org.apache.hadoop/hadoop-core "0.20.2-dev"]]
   :profiles {:dev {:dependencies [[midje-cascalog "0.4.0"]]}})
