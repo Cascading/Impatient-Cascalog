@@ -1,40 +1,21 @@
 ## <del>Cascading</del> *Cascalog* for the Impatient
 
 Welcome to Cascalog for the Impatient, a series of tutorial 
-and <del>Cascading 2.0</del> [Cascalog](http://www.cascalog.org/) code examples to get you started. 
-Quickly. Like, yesterday.
-
-*This is a shameless rip-off of [Cascading for the
-Impatient](http://www.cascading.org/category/impatient/).*
+and [Cascalog](http://www.cascalog.org/) code examples to get you started. This series is a fork of [Cascading for the
+Impatient](http://www.cascading.org/category/impatient/).
 
 This set of progressive coding examples starts with a simple file copy and builds up to a MapReduce implementation of the TF-IDF algorithm.
 
-### Part 1
-* Implements simplest Cascalog query possible
-* Copies each line from source tap to sink tap
-* Roughly, in about 10 lines of code
+When you are ready, clone this repository and head over [to the Wiki to follow through with the 6-part tutorial](https://github.com/Quantisan/Impatient/wiki).
 
-### Part 2
-* Implements a simple example of WordCount
-* Uses a regex to split the input text lines into a Tuple stream of tokens
-* Uses a custom Cascalog operator
+## Prerequisites
 
-### Part 3
-* Uses a custom function to scrub the token stream
-* Discusses when to use standard Operations vs. creating custom ones
+Install the following:
 
-### Part 4
-* Shows how to join sources together
-* Filters a list of stop words out of the token stream
-* Uses a Predicate Macro
+1. Hadoop, see Apache's instruction on [setting up a local node](http://wiki.apache.org/hadoop/GettingStartedWithHadoop)
+2. [Leiningen build tool for Clojure](https://github.com/technomancy/leiningen)
 
-### Part 5
-* Calculates TF-IDF by breaking the problem into sub-queries
-* Shows using an abstracted, re-useable sub-query as a function
-
-### Part 6
-* Includes unit tests in the build
-* Shows how to use other TDD features: checkpoints, assertions, traps, debug
+Some basic knowledge of [Clojure](http://clojure.org/) and using Leiningen would be helpful.
 
 ## TO-DO
 
