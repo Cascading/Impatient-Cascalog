@@ -1,9 +1,7 @@
-# Cascading for the Impatient, Part 6
-The goal is to expand on our Word Count example in Cascading, adding a custom **function** to calculate [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf). This shows how to use a **sumby** and also a **cogroup**.
+# Cascalog for the Impatient, Part 6
+The goal is to expand on our Word Count example in Cascalog, adding a custom **function** to calculate [TF-IDF](http://en.wikipedia.org/wiki/Tf*idf). This part shows how to use unit tests.
 
-We'll keep building on this example to show features related to TDD and "local" mode.
-
-More detailed background information and step-by-step documentation is provided at https://github.com/ConcurrentCore/impatient/wiki
+More detailed background information and step-by-step documentation is provided at the [project wiki](https://github.com/Quantisan/Impatient/wiki).
 
 # Run Tests
 
@@ -29,6 +27,6 @@ To view the results:
 
 An example of log captured from a successful build+run is at https://gist.github.com/3044049
 
-For more discussion, see the [cascading-user](https://groups.google.com/forum/?fromgroups#!forum/cascading-user) email forum.
+For more discussion, see the [cascalog-user](https://groups.google.com/forum/?fromgroups#!forum/cascalog-user) email forum.
 
-Stay tuned for the next installments of our [Cascading for the Impatient](http://www.cascading.org/category/impatient/) series.
+This tutorial is derived from the [Cascading for the Impatient](http://www.cascading.org/category/impatient/) series.
