@@ -8,5 +8,5 @@
   :main impatient.core
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [cascalog "1.10.0"]
-                 [cascalog-more-taps "0.3.0"]
-                 [org.apache.hadoop/hadoop-core "0.20.2-dev"]])
+                 [cascalog-more-taps "0.3.0"]]
+  :profiles {:provided {:dependencies [[org.apache.hadoop/hadoop-core "0.20.2-dev"]]}})
