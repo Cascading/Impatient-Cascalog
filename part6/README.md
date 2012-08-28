@@ -17,15 +17,15 @@ To build the sample app from the command line use:
 Before running this sample app, be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
 
     rm -rf output
-    hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf output/trap output/check
+    hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf
 
 To view the results:
 
     more output/tfidf/part-00000
     more output/trap/part-m-00001-00000 
-    more output/check/part-00000 
 
-An example of log captured from a successful build+run is at https://gist.github.com/3044049
+An example of log captured from a successful build+run is at [this
+gist](https://gist.github.com/3501436). 
 
 For more discussion, see the [cascalog-user](https://groups.google.com/forum/?fromgroups#!forum/cascalog-user) email forum.
 
