@@ -40,7 +40,7 @@
       (stop ?word !!is-stop)
       (nil? !!is-stop)
       (assert-doc-id ?doc-id)
-      (:trap (hfs-textline "tmp/trap" :sinkmode :update))))
+      (:trap (hfs-textline "output/trap" :sinkmode :update))))
 
 (defn word-count [src]
   "simple word count across all documents"
