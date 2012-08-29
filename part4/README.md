@@ -21,7 +21,7 @@ To view the results:
 
     more output/wc/part-00000
 
-An example of log captured from a successful build+run is at <del>https://gist.github.com/3043745</del>
+An example of log captured from a successful build+run at [this gist](https://gist.github.com/3519212).
 
 For more discussion, see the [cascalog-user](https://groups.google.com/forum/?fromgroups#!forum/cascalog-user) email forum.
 
