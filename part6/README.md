@@ -15,7 +15,7 @@ To build the sample app from the command line use:
 Before running this sample app, clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
 
     rm -rf output
-    hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf
+    hadoop jar target/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf
 
 To view the results:
 
