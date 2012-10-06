@@ -23,7 +23,7 @@
   (<- [?doc-id ?word]
       (rain ?doc-id ?line)
       (split ?line :> ?word-dirty)
-      ((c/comp #'s/trim #'s/lower-case) ?word-dirty :> ?word)
+      ((c/comp s/trim s/lower-case) ?word-dirty :> ?word)
       (stop ?word !!is-stop)
       (nil? !!is-stop)))
 
