@@ -33,24 +33,16 @@
       (src _ ?word)
       (c/count ?count)))
 
-(defn uniquefy [src]
-  "a helper function to DISTINCT the incoming source"
-  (let [vars (v/gen-non-nullable-vars (num-out-fields src))]
-    (<- vars
-        (src :>> vars)
-        (:distinct true))))
-
 (defn D [src]
-  (let [distinct-doc-id (uniquefy (select-fields src ["?doc-id"]))]
+  (let [src  (select-fields src ["?doc-id"])]
     (<- [?n-docs]
-        (distinct-doc-id ?doc-id)
-        (c/count ?n-docs))))
+        (src ?doc-id)
+        (c/distinct-count ?doc-id :> ?n-docs))))
 
 (defn DF [src]
-  (let [distincted (uniquefy src)]
-    (<- [?df-word ?df-count]
-        (distincted _ ?df-word)
-        (c/count ?df-count))))
+  (<- [?df-word ?df-count]
+      (src ?doc-id ?df-word)
+      (c/distinct-count ?doc-id ?df-word :> ?df-count)))
 
 (defn TF [src]
   (<- [?doc-id ?tf-word ?tf-count]
