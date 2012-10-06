@@ -19,7 +19,3 @@
     (fact
       (etl-docs-gen rain stop) => (produces [["doc1" "a"]
                                              ["doc1" "c"]]))))
-
-(deftest uniquefy-test
-  (fact
-    (uniquefy [["a"] ["b"] ["a"]]) => (produces [["a"] ["b"]])))
