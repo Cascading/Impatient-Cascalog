@@ -12,7 +12,7 @@ To build the sample app from the command line use:
 
     lein uberjar 
 
-Before running this sample app, be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory. To run on a desktop/laptop with Apache Hadoop in standalone mode:
+Before running this sample app, be sure to clear the `output` directory. To run on a desktop/laptop with Apache Hadoop in standalone mode:
 
     rm -rf output
     hadoop jar ./target/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf
@@ -21,7 +21,8 @@ To view the results:
 
     more output/tfidf/part-00000
 
-An example of log captured from a successful build+run is at <del>https://gist.github.com/3043791</del>
+An example of log captured from a successful build+run is at [this
+gist](https://gist.github.com/3845007)
 
 For more discussion, see the [cascalog-user](https://groups.google.com/forum/?fromgroups#!forum/cascalog-user) email forum.
 
