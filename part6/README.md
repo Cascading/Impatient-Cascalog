@@ -5,16 +5,14 @@ More detailed background information and step-by-step documentation is provided 
 
 # Run Tests
 
-```bash
-lein test
-```
+    lein test
 
 # Build Instructions
 To build the sample app from the command line use:
 
     lein uberjar 
 
-Before running this sample app, be sure to set your `HADOOP_HOME` environment variable. Then clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
+Before running this sample app, clear the `output` directory, then to run on a desktop/laptop with Apache Hadoop in standalone mode:
 
     rm -rf output
     hadoop jar ./build/libs/impatient.jar data/rain.txt output/wc data/en.stop output/tfidf
