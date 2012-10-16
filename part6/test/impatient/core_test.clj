@@ -8,11 +8,6 @@
   (fact
     (scrub-text "FoO BAR  ") => "foo bar"))
 
-(deftest expand-stop-tuple-test
-  (let [src  [["a"] ["b"] ["c"]]]
-    (fact
-      (expand-stop-tuple src) => (produces [["a" true] ["b" true] ["c" true]]))))
-
 (deftest etl-docs-gen-test
   (let [rain [["doc1" "a b c"]]
         stop [["b" true]]]

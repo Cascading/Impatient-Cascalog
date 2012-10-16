@@ -9,23 +9,12 @@
   "reads in a line of string and splits it by regex"
   (s/split line #"[\[\]\\\(\),.)\s]+"))
 
-(defn constant-true [x]
-  "always return true"
-  true)
-
-(defn expand-stop-tuple [stop]
-  "hack to make 'left-join-negate-right' works in etl-docs-gen"
-  (<- [?stop ?stub]
-      (stop ?stop)
-      (constant-true ?stop :> ?stub)))
-
 (defn etl-docs-gen [rain stop]
   (<- [?doc-id ?word]
       (rain ?doc-id ?line)
       (split ?line :> ?word-dirty)
       ((c/comp s/trim s/lower-case) ?word-dirty :> ?word)
-      (stop ?word !!is-stop)
-      (nil? !!is-stop)))
+      (stop ?word :> false)))
 
 (defn word-count [src]
   "simple word count across all documents"
@@ -64,7 +53,7 @@
 
 (defn -main [in out stop tfidf & args]
   (let [rain (hfs-delimited in :skip-header? true)
-        stop (expand-stop-tuple (hfs-delimited stop :skip-header? true))
+        stop (hfs-delimited stop :skip-header? true)
         src  (etl-docs-gen rain stop)]
     (?- (hfs-delimited tfidf)
         (TF-IDF src))

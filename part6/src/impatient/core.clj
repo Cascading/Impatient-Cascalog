@@ -10,16 +10,6 @@
   "reads in a line of string and splits it by regex"
   (s/split line #"[\[\]\\\(\),.)\s]+"))
 
-(defn constant-true [x]
-  "always return true"
-  true)
-
-(defn expand-stop-tuple [stop]
-  "hack to make 'left-join-negate-right' works in etl-docs-gen"
-  (<- [?stop ?stub]
-      (stop ?stop)
-      (constant-true ?stop :> ?stub)))
-
 (defn scrub-text [s]
   "trim open whitespaces and lower case"
   ((comp s/trim s/lower-case) s))
@@ -37,8 +27,7 @@
       (rain ?doc-id ?line)
       (split ?line :> ?word-dirty)
       (scrub-text ?word-dirty :> ?word)
-      (stop ?word !!is-stop)
-      (nil? !!is-stop)
+      (stop ?word :> false)
       (assert-doc-id ?doc-id)
       (:trap (hfs-textline "output/trap" :sinkmode :update))))
 
@@ -82,13 +71,13 @@
     ["tmp/checkpoint"]
     etl-step ([:tmp-dirs etl-stage]
               (let [rain (hfs-delimited in :skip-header? true)
-                    stop (expand-stop-tuple (hfs-delimited stop :skip-header? true))]
+                    stop (hfs-delimited stop :skip-header? true)]
                 (?- (hfs-delimited etl-stage)
                     (etl-docs-gen rain stop))))
     tf-step  ([:deps etl-step]
               (let [src (name-vars (hfs-delimited etl-stage :skip-header? true) ["?doc-id" "?word"])]
                 (?- (hfs-delimited tfidf)
-                    (TF-IDF src)))) 
+                    (TF-IDF src))))
     wrd-step ([:deps etl-step]
               (?- (hfs-delimited out)
                   (word-count (hfs-delimited etl-stage))))))
