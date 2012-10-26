@@ -10,7 +10,7 @@
 
 (deftest etl-docs-gen-test
   (let [rain [["doc1" "a b c"]]
-        stop [["b" true]]]
+        stop [["b"]]]
     (fact
       (etl-docs-gen rain stop) => (produces [["doc1" "a"]
                                              ["doc1" "c"]]))))
