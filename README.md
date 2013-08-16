@@ -8,7 +8,7 @@ This set of progressive coding examples starts with a simple file copy and build
 
 ## Getting Started
 
-Clone this repository and head over [to the Wiki to follow through with this 6-part tutorial](https://github.com/Quantisan/Impatient/wiki).
+Clone this repository and head over [to the Wiki to follow through with this 6-part tutorial](https://github.com/Cascading/Impatient-Cascalog/wiki).
 
 ## Prerequisites
 
