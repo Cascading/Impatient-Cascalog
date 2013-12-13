@@ -43,6 +43,7 @@ if [ ! -e /opt/hadoop ]; then
    tar -zxvf /tmp/hadoop-2.2.0.tar.gz
    ln -s hadoop-2.2.0 hadoop
    rm /tmp/hadoop-2.2.0.tar.gz
+   echo "export PATH=$PATH:/opt/hadoop/bin" | tee -a /home/vagrant/.bashrc
 fi
 
 END
